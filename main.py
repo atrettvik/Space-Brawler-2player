@@ -129,6 +129,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                pygame.quit()
                 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LCTRL and len(yellow_bullets) < MAX_BULLETS:
@@ -165,7 +166,7 @@ def main():
         
         draw_window(red, yellow, red_bullets, yellow_bullets, yellow_health, red_health)
 
-    pygame.quit()
+    main()
     
 if __name__ == "__main__":
     main()
