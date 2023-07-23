@@ -7,10 +7,15 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Brawler")
 
 
-# VARIABLE
+# VARIABLES
+BORDER = pygame.Rect(WIDTH/2, - 5, 10, HEIGHT)
+
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
 FPS = 60
 VEL = 5
+
 SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55, 40
 
 #IMAGES
@@ -26,6 +31,7 @@ BACKGROUND_IMAGE = pygame.image.load(os.path.join("Assets", "space.png"))
 def draw_window(red, yellow):
     WIN.fill(WHITE)
     WIN.blit(BACKGROUND_IMAGE, (0, 0))
+    pygame.draw.rect(WIN, BLACK, BORDER)
     WIN.blit(YELLOW_SPACESHIP, (yellow.x, yellow.y))
     WIN.blit(RED_SPACESHIP, (red.x, red.y))
     pygame.display.update()
@@ -51,7 +57,8 @@ def red_handle_movement(keys_pressed, red):
         if keys_pressed[pygame.K_DOWN]: # DOWN
             red.y += VEL
     
-def main(): 
+def main():
+    pygame.init() 
     
     red = pygame.Rect(800, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
     yellow = pygame.Rect(200, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
