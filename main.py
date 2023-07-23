@@ -10,8 +10,8 @@ pygame.display.set_caption("Space Brawler")
 # VARIABLES
 BORDER = pygame.Rect(WIDTH//2, - 5, 10, HEIGHT)
 
-HEALTH_FONT = pygame.font.SysFont("comicsans", 40)
-
+HEALTH_FONT = pygame.font.SysFont("worksans", 40)
+WINNER_FONT = pygame.font.SysFont("worksans", 100)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -104,6 +104,11 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
 
 
 # MAIN FUNCTION
+def draw_winner(text):
+    draw_text = WINNER_FONT.render(text, 1, WHITE)
+    WIN.blit(draw_text, (WIDTH/2 - draw.text.get_width()/2, HEIGHT / 2 - draw_text.get_height()/2))
+    pygame.display.update()
+    pygame.time.delay(5000)
     
 def main():
     global red_health
@@ -148,7 +153,8 @@ def main():
             winner_text = "Red Wins!!"        
         
         if winner_text != "":
-            pass # SOMEONE WON  
+            draw_winner(winner_text)
+            break
                    
         print(red_bullets, yellow_bullets)
         keys_pressed = pygame.key.get_pressed()
