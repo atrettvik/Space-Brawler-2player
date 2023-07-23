@@ -28,8 +28,8 @@ SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55, 40
 YELLOW_HIT = pygame.USEREVENT + 1
 RED_HIT = pygame.USEREVENT + 2
 
-BULLET_HIT_SOUND = pygame.mixer.load(os.path.join("assets", "Grenade+1.mp3"))
-BULLET_FIRE_SOUND = pygame.mixer.load(os.path.join("assets", "Gun+Silencer.mp3"))
+BULLET_HIT_SOUND = pygame.mixer.Sound(os.path.join("assets", "Grenade+1.mp3"))
+BULLET_FIRE_SOUND = pygame.mixer.Sound(os.path.join("assets", "Gun+Silencer.mp3"))
 
 yellow_health = 10
 red_health = 10
