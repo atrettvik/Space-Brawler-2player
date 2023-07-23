@@ -45,7 +45,8 @@ def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_hea
     
     red_health_text = HEALTH_FONT.render("Health: " + str(red_health), 1, WHITE)
     yellow_health_text = HEALTH_FONT.render("Health: " + str(yellow_health), 1, WHITE)
-    WIN.blit(red_health_text, (WIDTH - red_health_text.get.width() - 10, 10))
+    WIN.blit(red_health_text, (WIDTH - red_health_text.get_width() - 10, 10))
+
     WIN.blit(yellow_health_text, (10, 10))
         
     WIN.blit(YELLOW_SPACESHIP, (yellow.x, yellow.y))
@@ -88,7 +89,7 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
     for bullet in yellow_bullets:
         bullet.x += BULLET_VEL
         if red.colliderect(bullet):
-            pygame.event.post(pygame.event.Event(RED_HIT))
+            pygame.event.post(pygame.event.Event(YELLOW_HIT))
             yellow_bullets.remove(bullet)
         elif bullet.x > WIDTH:
             yellow_bullets.remove(bullet)
@@ -96,7 +97,7 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
     for bullet in red_bullets:
         bullet.x -= BULLET_VEL
         if yellow.colliderect(bullet):
-            pygame.event.post(pygame.event.Event(YELLOW_HIT))
+            pygame.event.post(pygame.event.Event(RED_HIT))
             red_bullets.remove(bullet)
         elif bullet.x < 0:
             red_bullets.remove(bullet)
@@ -105,6 +106,9 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
 # MAIN FUNCTION
     
 def main():
+    global red_health
+    global yellow_health
+    
     pygame.init() 
     
     red = pygame.Rect(800, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
