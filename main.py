@@ -123,7 +123,9 @@ def main():
     red_bullets = []
     
     clock = pygame.time.Clock()
+    
     run = True
+    
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
@@ -166,7 +168,7 @@ def main():
         
         draw_window(red, yellow, red_bullets, yellow_bullets, yellow_health, red_health)
 
-    main()
+    pygame.quit()
     
 if __name__ == "__main__":
     main()
